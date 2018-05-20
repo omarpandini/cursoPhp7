@@ -11,7 +11,7 @@ class Usuario
 	private $dtcadastro;
 
 	
-    //Getters
+        //Getters
 	public function getIdUsuario()
 	{
 		return $this->idusuario;
@@ -49,6 +49,40 @@ class Usuario
 	}
 
 
+        public function getAllUsuarios() {
+            /*$var = new Sql2();
+            
+            $conn = $var->getConn();
+            
+            $stmt = $conn->prepare("select * from tb_usuarios");
+
+            $stmt-> execute();
+
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            echo json_encode($results);*/
+            
+            /*$sql =  new Sql2();
+            
+            return $sql->selectGetAll("select * from tb_usuarios");*/
+            
+            $sql = new Sql2();
+            
+            $var = $sql->selectGetAll("select * from tb_usuarios");
+            
+            return $var;
+                     
+        }
+        
+        public function getUserById($param) {
+            $sql = new Sql2();
+            
+            $var = $sql->selectGetByParam("select * from tb_usuarios where idusuario = :ID", array(
+                ":ID"=>$param
+            ));
+            
+            return $var;
+        }
 
 
 	public function loadById($id)

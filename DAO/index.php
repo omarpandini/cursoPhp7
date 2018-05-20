@@ -11,8 +11,12 @@
 
 	$user = new Usuario();
 
-	$user->loadById(1);
+	//$user->loadById(1);
+        
+        $usuarios = $user->getUserById(1);
 
-	echo $user;
+	echo json_encode($usuarios);
+        
+        
 
  ?>

@@ -12,6 +12,8 @@
 		{
 			$this->conn = new PDO("mysql:dbname=dbphp7;host=localhost","root","");
 		}
+                
+               
 
 		private function setParams($statement,$parameters = array())
 		{
