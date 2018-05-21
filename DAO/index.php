@@ -15,12 +15,29 @@
         //echo json_encode(Usuario::search("MZO") );
         
         //Faz validação de usuario e senha
-        $login = "root";
+        /*$login = "root";
         $senha = "adfasf";
         $user = new Usuario();
         $user->login($login, $senha);
         
-        echo $user;
+        echo $user;*/
+        
+        //Criando um novo usuário no banco
+        /*$novoUsuario = new Usuario();
+        $novoUsuario->setDesLogin("mzo_novo_login");
+        $novoUsuario->setDesSenha("nova_senha_para_mzo");
+        $novoUsuario->insert();
+        echo $novoUsuario;*/
+        
+        //Criando um novo usuário com construtor
+        /*$novoUsuario = new Usuario("deia_mzo", "ucaucauca");
+        $novoUsuario->insert();
+        echo $novoUsuario;*/
+        
+        //Alterando um usuário
+        $alteraUsuario = new Usuario();
+        $alteraUsuario->loadById(3);
+        $alteraUsuario->update("deia@_novo","deiamzo1020");
         
 
  ?>
