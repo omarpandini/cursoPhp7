@@ -1,22 +1,26 @@
 <?php 
 
-	require_once("config.php");
+	require_once("config.php");	
 
-	/*$sql = new Sql();
+	//$user = new Usuario();
 
-	$usuarios = $sql->select("select * from tb_usuarios");
-
-	echo json_encode($usuarios);
-	*/
-
-	$user = new Usuario();
-
-	//$user->loadById(1);
+	//Traz somete um usuário
+        //$user->loadById(1);    
+	//echo $user;  
         
-        $usuarios = $user->getUserById(1);
-
-	echo json_encode($usuarios);
+        //Carrega uma lista de usuários
+        //echo json_encode(Usuario::getList());
         
+        //Carrega um usuário passado por parâmetro o login, com like %%
+        //echo json_encode(Usuario::search("MZO") );
+        
+        //Faz validação de usuario e senha
+        $login = "root";
+        $senha = "adfasf";
+        $user = new Usuario();
+        $user->login($login, $senha);
+        
+        echo $user;
         
 
  ?>

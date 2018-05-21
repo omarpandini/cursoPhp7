@@ -1,7 +1,7 @@
 <?php 
 
 	/**
-	 * CLASSE SOMENTE INSTANCIANDO A CONFIGURAÇÃO DO BANCO
+	 * CLASSE CRIADA POR OMAR PANDINI
 	 */
 	class Sql2 extends PDO
 	{		

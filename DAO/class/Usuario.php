@@ -49,41 +49,6 @@ class Usuario
 	}
 
 
-        public function getAllUsuarios() {
-            /*$var = new Sql2();
-            
-            $conn = $var->getConn();
-            
-            $stmt = $conn->prepare("select * from tb_usuarios");
-
-            $stmt-> execute();
-
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            echo json_encode($results);*/
-            
-            /*$sql =  new Sql2();
-            
-            return $sql->selectGetAll("select * from tb_usuarios");*/
-            
-            $sql = new Sql2();
-            
-            $var = $sql->selectGetAll("select * from tb_usuarios");
-            
-            return $var;
-                     
-        }
-        
-        public function getUserById($param) {
-            $sql = new Sql2();
-            
-            $var = $sql->selectGetByParam("select * from tb_usuarios where idusuario = :ID", array(
-                ":ID"=>$param
-            ));
-            
-            return $var;
-        }
-
 
 	public function loadById($id)
 	{
@@ -107,15 +72,57 @@ class Usuario
 		}
 
 	}
+        
+        public static function getList() {
+            
+            $sql = new Sql();
+            
+            return $sql->select("select * from tb_usuarios order by deslogin");          
+            
+            
+        }
+        
+        public static function search($login) {
+            
+            $sql = new Sql();
+            
+            return $sql->select("select * from tb_usuarios where deslogin like :SEARCH order by deslogin",array(
+                ":SEARCH"=>"%".$login."%"
+            ));
+            
+        }
+        
+        public function login($login,$senha) {
+            $sql = new Sql();
+
+            $results = $sql->select("select * from tb_usuarios where deslogin = :LOGIN and dessenha = :SENHA",array(
+                    ":LOGIN"=>$login,
+                    ":SENHA"=>$senha
+            ));
 
 
+            //Verificar se sql trouxe algum retorno
+            if ( isset($results[0]) ) 
+            {
+                    $row = $results[0];
+
+                    $this-> setIdUsuario($row["idusuario"]);
+                    $this-> setDesLogin($row["deslogin"]);
+                    $this-> setDesSenha($row["dessenha"]);
+                    $this-> setDtCadastro( new DateTime( $row["dtcadastro"]));
+            }else
+            {
+                throw new Exception("Usuário inválido");
+            }
+        }
 
 	public function __toString()
 	{
 		return json_encode(array(
 			"idUsuario"=>$this->getIdUsuario(),
 			"deslogin"=>$this->getDesLogin(),
-			"dtcadastro"=>$this->getDtCadastro()
+                        "dessenha"=>$this->getDesSenha(),
+			"dtcadastro"=>$this->getDtCadastro()->format("d/m/Y H:i:s")
 		));
 
 	}
