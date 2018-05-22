@@ -35,9 +35,14 @@
         echo $novoUsuario;*/
         
         //Alterando um usuário
-        $alteraUsuario = new Usuario();
+        /*$alteraUsuario = new Usuario();
         $alteraUsuario->loadById(3);
-        $alteraUsuario->update("deia@_novo","deiamzo1020");
+        $alteraUsuario->update("deia@_novo_2","deiamzo1020");*/
+        
+        //Excluido um usuário
+        $exclui = new Usuario();
+        $exclui->loadById(3);
+        $exclui->delete();
         
 
  ?>

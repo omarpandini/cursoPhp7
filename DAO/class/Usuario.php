@@ -140,6 +140,18 @@ class Usuario
             ));
         }
         
+        public function delete() {
+            $sql = new Sql();
+            $sql->query("delete from tb_usuarios where idusuario = :ID",array(
+                ":ID"=>$this->getIdUsuario()
+            ));
+            
+            $this->setIdUsuario(0);
+            $this->setDesLogin("");
+            $this->setDesSenha("");
+            $this->setDtCadastro(new DateTime());
+        }
+        
         public function setData($data) {
             $this-> setIdUsuario($data["idusuario"]);
             $this-> setDesLogin($data["deslogin"]);
