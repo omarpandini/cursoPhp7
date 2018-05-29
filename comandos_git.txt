@@ -1,6 +1,9 @@
 //Iniciando o git em uma pasta / Primeiro uso
 git init
 
+//Clonando um repositório
+$ git clone git://github.com/schacon/grit.git
+
 //Verificando objetos alterados
 git status
 
@@ -14,3 +17,4 @@ git commit -m "mensagem do porque"
 
 //Jogando para o servidor
 git push origin master
+
