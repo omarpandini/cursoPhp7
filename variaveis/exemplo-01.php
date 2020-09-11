@@ -6,6 +6,8 @@ $nome = "Omar";
 
 //teste
 
+//novo teste
+
 var_dump($nome);
 
 ?>
